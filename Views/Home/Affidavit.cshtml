@@ -1,0 +1,2504 @@
+﻿
+<style>
+    .menuIcon {
+        color: #1a253d;
+        font-weight: normal;
+        font-size: 15px;
+    }
+
+        .menuIcon svg path {
+            fill: #1a253d;
+        }
+
+    #dragSignature, #droppableSignature, #drpSign, #drpDate {
+        width: 100px;
+        height: 50px;
+        background: #ccc;
+    }
+
+        #dragSignature img, #drpSign img, .draggable-img {
+            height: 50px;
+            width: 100px;
+        }
+
+        #dragSignature .custom-state-active {
+            background: #eee;
+        }
+
+    #signatureDrpImg {
+        display: none;
+    }
+    /* #droppable {
+                                                                                        position: absolute;
+                                                                                        left: 250px;
+                                                                                        top: 0;
+                                                                                        width: 125px;
+                                                                                        height: 125px;
+                                                                                        background: #999;
+                                                                                        color: #fff;
+                                                                                        padding: 10px;
+                                                                                      } */
+
+    body {
+        font-family: Arial !important;
+        font-size: 12pt;
+        background: #f3f3f3;
+    }
+
+    p {
+        margin: 0pt
+    }
+
+    li,
+    table {
+        margin-top: 0pt;
+        margin-bottom: 0pt
+    }
+
+    .Normal0 {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .Footer {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .FootnoteText {
+        margin-left: 36pt;
+        margin-bottom: 0pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 10pt
+    }
+
+    .Header {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .ListBullet {
+        margin-left: 36pt;
+        margin-bottom: 12pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .ListBullet2 {
+        margin-left: 72pt;
+        margin-bottom: 12pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .ListBullet3 {
+        margin-left: 108pt;
+        margin-bottom: 12pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .ListBullet4 {
+        margin-left: 144pt;
+        margin-bottom: 12pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .ListBullet5 {
+        margin-left: 180pt;
+        margin-bottom: 12pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .Revision {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0sp0 {
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0sp0nospaceafter {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0sp05 {
+        margin-bottom: 12pt;
+        text-indent: 36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0sp1 {
+        margin-bottom: 12pt;
+        text-indent: 72pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0sp15 {
+        margin-bottom: 12pt;
+        text-indent: 108pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0sp2 {
+        margin-bottom: 12pt;
+        text-indent: 144pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spCentered {
+        margin-bottom: 12pt;
+        text-align: center;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spCenterednospaceafter {
+        margin-bottom: 0pt;
+        text-align: center;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spHanging05 {
+        margin-left: 36pt;
+        margin-bottom: 12pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spHanging05nospaceafter {
+        margin-left: 36pt;
+        margin-bottom: 0pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spHanging1 {
+        margin-left: 72pt;
+        margin-bottom: 12pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spHanging15 {
+        margin-left: 108pt;
+        margin-bottom: 12pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spHanging2 {
+        margin-left: 144pt;
+        margin-bottom: 12pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spLeftInd05 {
+        margin-left: 36pt;
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spLeftInd05nospaceafter {
+        margin-left: 36pt;
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spLeftInd1 {
+        margin-left: 72pt;
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spLeftInd15 {
+        margin-left: 108pt;
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spLeftInd2 {
+        margin-left: 144pt;
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spLeft-Right05 {
+        margin-right: 36pt;
+        margin-left: 36pt;
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spLeft-Right1 {
+        margin-right: 72pt;
+        margin-left: 72pt;
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spLeft-Right15 {
+        margin-right: 108pt;
+        margin-left: 108pt;
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spLeft-Right2 {
+        margin-right: 144pt;
+        margin-left: 144pt;
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 0spRightAligned {
+        margin-bottom: 12pt;
+        text-align: right;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .\31 5sp0 {
+        margin-bottom: 0pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5sp05 {
+        margin-bottom: 0pt;
+        text-indent: 36pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5sp1 {
+        margin-bottom: 0pt;
+        text-indent: 72pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5sp15 {
+        margin-bottom: 0pt;
+        text-indent: 108pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5sp2 {
+        margin-bottom: 0pt;
+        text-indent: 144pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spCentered {
+        margin-bottom: 0pt;
+        text-align: center;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spHanging05 {
+        margin-left: 36pt;
+        margin-bottom: 0pt;
+        text-indent: -36pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spHanging1 {
+        margin-left: 72pt;
+        margin-bottom: 0pt;
+        text-indent: -36pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spHanging15 {
+        margin-left: 108pt;
+        margin-bottom: 0pt;
+        text-indent: -36pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spHanging2 {
+        margin-left: 144pt;
+        margin-bottom: 0pt;
+        text-indent: -36pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spLeftInd05 {
+        margin-left: 36pt;
+        margin-bottom: 0pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spLeftInd1 {
+        margin-left: 72pt;
+        margin-bottom: 0pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spLeftInd15 {
+        margin-left: 108pt;
+        margin-bottom: 0pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spLeftInd2 {
+        margin-left: 144pt;
+        margin-bottom: 0pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spLeft-Right05 {
+        margin-right: 36pt;
+        margin-left: 36pt;
+        margin-bottom: 0pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spLeft-Right1 {
+        margin-right: 72pt;
+        margin-left: 72pt;
+        margin-bottom: 0pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spLeft-Right15 {
+        margin-right: 108pt;
+        margin-left: 108pt;
+        margin-bottom: 0pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spLeft-Right2 {
+        margin-right: 144pt;
+        margin-left: 144pt;
+        margin-bottom: 0pt;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\31 5spRightAligned {
+        margin-bottom: 0pt;
+        text-align: right;
+        line-height: 150%;
+        font-size: 12pt
+    }
+
+    .\32 0sp0 {
+        margin-bottom: 0pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0sp05 {
+        margin-bottom: 0pt;
+        text-indent: 36pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0sp1 {
+        margin-bottom: 0pt;
+        text-indent: 72pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0sp15 {
+        margin-bottom: 0pt;
+        text-indent: 108pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0sp2 {
+        margin-bottom: 0pt;
+        text-indent: 144pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spCentered {
+        margin-bottom: 0pt;
+        text-align: center;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spHanging05 {
+        margin-left: 36pt;
+        margin-bottom: 0pt;
+        text-indent: -36pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spHanging1 {
+        margin-left: 72pt;
+        margin-bottom: 0pt;
+        text-indent: -36pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spHanging15 {
+        margin-left: 108pt;
+        margin-bottom: 0pt;
+        text-indent: -36pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spHanging2 {
+        margin-left: 144pt;
+        margin-bottom: 0pt;
+        text-indent: -36pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spLeftInd05 {
+        margin-left: 36pt;
+        margin-bottom: 0pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spLeftInd1 {
+        margin-left: 72pt;
+        margin-bottom: 0pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spLeftInd15 {
+        margin-left: 108pt;
+        margin-bottom: 0pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spLeftInd2 {
+        margin-left: 144pt;
+        margin-bottom: 0pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spLeft-Right05 {
+        margin-right: 36pt;
+        margin-left: 36pt;
+        margin-bottom: 0pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spLeft-Right1 {
+        margin-right: 72pt;
+        margin-left: 72pt;
+        margin-bottom: 0pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spLeft-Right15 {
+        margin-right: 108pt;
+        margin-left: 108pt;
+        margin-bottom: 0pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spLeft-Right2 {
+        margin-right: 144pt;
+        margin-left: 144pt;
+        margin-bottom: 0pt;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .\32 0spRightAligned {
+        margin-bottom: 0pt;
+        text-align: right;
+        line-height: 200%;
+        font-size: 12pt
+    }
+
+    .Bullets0 {
+        margin-left: 36pt;
+        margin-bottom: 12pt;
+        text-indent: -36pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .Bullets05 {
+        margin-left: 0pt;
+        margin-bottom: 12pt;
+        text-indent: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .Bullets1 {
+        margin-left: 0pt;
+        margin-bottom: 12pt;
+        text-indent: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .Bullets15 {
+        margin-left: 0pt;
+        margin-bottom: 12pt;
+        text-indent: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .Bullets2 {
+        margin-left: 0pt;
+        margin-bottom: 12pt;
+        text-indent: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomHeading1 {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomHeading2 {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomHeading3 {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomHeading4 {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomHeading5 {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomHeading6 {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomParagraph1 {
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomParagraph2 {
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomParagraph3 {
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomParagraph4 {
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomParagraph5 {
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .CustomParagraph6 {
+        margin-bottom: 12pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .FooterCenterAligned {
+        margin-bottom: 0pt;
+        text-align: center;
+        line-height: normal;
+        font-size: 8pt
+    }
+
+    .FooterFiller {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 2pt
+    }
+
+    .FooterLeftAligned {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 8pt
+    }
+
+    .FooterRightAligned {
+        margin-bottom: 0pt;
+        text-align: right;
+        line-height: normal;
+        font-size: 8pt
+    }
+
+    .HdgCenter {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .HdgCenterBold {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold
+    }
+
+    .HdgCenterBold-Italic {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        font-style: italic
+    }
+
+    .HdgCenterBold-Und {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        text-decoration: underline
+    }
+
+    .HdgCenterBold-Und-Italic {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: underline
+    }
+
+    .HdgCenterItalic {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-style: italic
+    }
+
+    .HdgCenterUnd {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        text-decoration: underline
+    }
+
+    .HdgLeft {
+        margin-bottom: 12pt;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .HdgLeftBold {
+        margin-bottom: 12pt;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold
+    }
+
+    .HdgLeftBold-Italic {
+        margin-bottom: 12pt;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        font-style: italic
+    }
+
+    .HdgLeftBold-Und {
+        margin-bottom: 12pt;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        text-decoration: underline
+    }
+
+    .HdgLeftBold-Und-Italic {
+        margin-bottom: 12pt;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: underline
+    }
+
+    .HdgLeftItalic {
+        margin-bottom: 12pt;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-style: italic
+    }
+
+    .HdgLeftUnd {
+        margin-bottom: 12pt;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        text-decoration: underline
+    }
+
+    .HdgRight {
+        margin-bottom: 12pt;
+        text-align: right;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .HdgRightBold {
+        margin-bottom: 12pt;
+        text-align: right;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold
+    }
+
+    .HdgRightBold-Italic {
+        margin-bottom: 12pt;
+        text-align: right;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        font-style: italic
+    }
+
+    .HdgRightBold-Und {
+        margin-bottom: 12pt;
+        text-align: right;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        text-decoration: underline
+    }
+
+    .HdgRightBold-Und-Italic {
+        margin-bottom: 12pt;
+        text-align: right;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: underline
+    }
+
+    .HdgRightItalic {
+        margin-bottom: 12pt;
+        text-align: right;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-style: italic
+    }
+
+    .HdgRightUnd {
+        margin-bottom: 12pt;
+        text-align: right;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        text-decoration: underline
+    }
+
+    .Index {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .IndexDotLeaders {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .Non-NumberedHdg1 {
+        margin-bottom: 12pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        text-decoration: underline
+    }
+
+    .Non-NumberedHdg2 {
+        margin-bottom: 12pt;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold;
+        text-decoration: underline
+    }
+
+    .Non-NumberedHdg3 {
+        margin-left: 36pt;
+        margin-bottom: 12pt;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        text-decoration: underline
+    }
+
+    .NotaryHeading {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .NotarySignature {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .TableCentered {
+        margin-bottom: 0pt;
+        text-align: center;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .TableDecimalAlign {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .TableDotLeader {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .TableHeadingCentered {
+        margin-bottom: 0pt;
+        text-align: center;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold
+    }
+
+    .TableHeadingLeft {
+        margin-bottom: 0pt;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold
+    }
+
+    .TableHeadingRight {
+        margin-bottom: 0pt;
+        text-align: right;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        line-height: normal;
+        font-size: 12pt;
+        font-weight: bold
+    }
+
+    .TableLeftAlign {
+        margin-bottom: 0pt;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    .TableRightAlign {
+        margin-bottom: 0pt;
+        text-align: right;
+        line-height: normal;
+        font-size: 12pt
+    }
+
+    span.NormalChar {
+        font-size: 12pt
+    }
+
+    span.A8 {
+        font-size: 8pt;
+        color: #000000
+    }
+
+    span.FooterChar {
+        font-size: 12pt
+    }
+
+    span.FootnoteReference {
+        vertical-align: super
+    }
+
+    span.FootnoteTextChar {
+        font-size: 10pt
+    }
+
+    span.HeaderChar {
+        font-size: 12pt
+    }
+
+    span.\31 0sp0Char {
+        font-size: 12pt
+    }
+</style>
+
+<div class="row mb-5">
+    <div class="col-md-12">
+        @* <div id="signature-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <p>Drag and drop your signature here</p>
+        </div>
+        <img id="signature-img" alt="Signature" style="max-width: 100%;">
+        <button onclick="saveSignature()">Save Signature</button> *@
+        @*  <div id="winnerSignature" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 200px; height: 100px; border: 1px solid black;"></div>
+        <br />
+        <img id="signature-img" alt="Signature" style="max-width: 100%;">
+        <br />
+        <button onclick="convertToPDF()">Convert to PDF</button> *@
+    </div>
+    <div class="col-md-3">
+        @* <div id="droppable">Drop here</div> *@
+    </div>
+    @* <div class="col-md-3">
+    <div id="dragSignature"><img src="~/signatures/signature.png" /></div>
+    </div> *@
+</div>
+
+<div style="display:flex; align-items: start;">
+    <div style="width: 250px; background-color: #fff; border: 1px solid #ddd;     padding: 6px 0px;">
+        <ul style="list-style-type: none; margin: 0px; padding: 0px">
+            <li style="margin-bottom: 8px; padding: 6px 12px;">
+                <a href="javascript:void();" style="text-decoration: none;" onclick="showSignature(this)" class="menuIcon"><i class="fa-solid fa-file-pen"></i><span style="margin-left: 8px;">Signature</span></a>
+            </li>
+            <li style="margin-bottom: 8px; padding: 6px 12px;">
+                <a href="javascript:void();" onclick="showDateDiv(this)" style="text-decoration: none;" class="menuIcon"><i class="fa-solid fa-calendar-days"></i><span style="margin-left: 8px;">Date Signed</span></a>
+            </li>
+            <li style="margin-bottom: 8px;">
+                <div style="border-bottom: 1px solid #ddd">
+                </div>
+            </li>
+            <li style="margin-bottom: 8px; padding: 6px 12px;">
+                <a href="javascript:void();" style="text-decoration: none;" class="menuIcon"><i class="fa-solid fa-user"></i><span style="margin-left: 8px;">First Name</span></a>
+            </li>
+            <li style="margin-bottom: 8px; padding: 6px 12px;">
+                <a href="javascript:void();" style="text-decoration: none;" class="menuIcon"><i class="fa-solid fa-user"></i><span style="margin-left: 8px;">Last Name</span></a>
+            </li>
+            <li style="margin-bottom: 8px; padding: 6px 12px;">
+                <a href="javascript:void();" style="text-decoration: none;" class="menuIcon"><i class="fa-solid fa-address-book"></i><span style="margin-left: 8px;">Address</span></a>
+            </li>
+        </ul>
+    </div>
+    <div style="width: 816px; margin: 0px auto; border: 2px solid #ddd; padding: 15px; background: #fff;">
+        <div>
+            <p class="10spCentered" style="margin-bottom: 3pt; font-size: 12pt;">
+                <strong>
+                    <span style="text-transform:uppercase">
+                        APPROVED REPAIR 2024 swipe &amp; win
+                        promotion
+                    </span>
+                </strong>
+            </p>
+            <p class="10spCentered" style="margin-bottom:3pt; font-size:12pt; color: #666666;">
+                <strong>Prize Winner and Travel Companion Affidavit of Eligibility/Liability Release</strong>
+            </p>
+            <p class="10spCentered" style="margin-bottom:6pt; font-size:12pt; color: #666666;">
+                <strong>(Print clearly in English)</strong>
+            </p>
+            <div class="winnnerForm">
+            </div>
+            <div style="border: 1px solid #b1b1b1; margin: 20px 0px;">
+                <div style=" padding: 8px 15px; border-bottom: 1px solid #b1b1b1;">
+                    <p class="10sp0" style="margin-bottom:0pt; font-size:13pt;">
+                        <strong>Winner:</strong>
+                    </p>
+                </div>
+                <div style="padding:12px 15px;">
+                    <p class="10sp0" style="margin-bottom:0pt; padding-right:4pt; padding-bottom:12pt; font-size:11pt">
+                        Winner's Name: <input type="text" disabled / style="width: 80%;
+        border: 0pc;
+        background: transparent;
+        border-bottom: 1px solid #c2c2c2;">
+                    </p>
+                    <p class="10sp0" style="margin-bottom:0pt; padding-right:4pt; padding-bottom:12pt; font-size:11pt">
+                        Winner's Address:&#xa0; <input type="text" disabled / style="width: 80%;
+        border: 0pc;
+        background: transparent;
+        border-bottom: 1px solid #c2c2c2;">
+                    </p>
+                    <p class="10sp0" style="margin-bottom:0pt; padding-right:4pt; padding-bottom:1pt; font-size:11pt">
+                        Winner's Phone Number: <input type="text" disabled / style="width: 30%;
+        border: 0pc;
+        background: transparent;
+        border-bottom: 1px solid #c2c2c2;"> Winner's Age:<input type="text" style="width: 23%;
+        border: 0pc;
+        background: transparent;
+        border-bottom: 1px solid #c2c2c2;">(MM/DD/YY)
+                    </p>
+                </div>
+            </div>
+            <div class="10sp0" style="margin-top:3pt; margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    With Official
+                    Rules
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    I have read, understand, and agree to the Official Rules for the Approved Repair 2024 Swipe &amp;
+                    Win
+                    Promotion (the "<strong><em>Promotion</em></strong>") attached hereto as <u>Exhibit A</u>, which is
+                    sponsored by Automobile Club of Southern California ("<strong><em>Sponsor</em></strong>").&#xa0; I
+                    represent
+                    that I have complied with the Official Rules for the Promotion and I have perpetrated no fraud or
+                    deception
+                    in connection with my participation in the Promotion.&#xa0; I agree to return to Sponsor any prize
+                    which
+                    may
+                    be awarded to me if any statement made by me in this Affidavit and Release is false.
+                </div>
+            </div>
+            <div class="10sp0" style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Affidavit and Release
+                    Requirements
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    I understand and agree that I must sign and return this Affidavit and
+                    Release by
+                    the redemption deadline set by Sponsor, and if I do not, I will forfeit any prize I may otherwise
+                    have
+                    received.
+                </div>
+            </div>
+            <div class="10sp0" style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Eligibility
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    I represent
+                    and
+                    warrant that I am eligible to participate in the Promotion in accordance with the eligibility
+                    criteria
+                    set
+                    forth in the Official Rules.
+                </div>
+            </div>
+            <div class="10sp0" style="margin-bottom:10pt; text-align:justify; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Acceptance of Prize
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    Nine
+                    hundred (900) eligible entrants will each win a $100 Prize Voucher for <span class="A8"
+                                                                                                 style="font-size:10pt">
+                        auto repairs, products, and services at the AAR or ADR Facility that
+                        issued
+                        the
+                        Prize Voucher Ten
+                    </span><span class="A8" style="font-size:10pt; font-weight:bold"> </span><span class="A8" style="font-size:10pt">
+                        (10) winners from all eligible entries received within the
+                        Promotion
+                        Territory during the Promotion Period will each win a $500 gift card.
+                    </span>
+                </div>
+            </div>
+            <div class="10sp0" style="margin-bottom:10pt; text-align:justify; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Disclaimer of Warranties
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    <span style="text-transform:uppercase">
+                        I UNDERSTAND AND AGREE THAT THE PRIZE IS PROVIDED "AS IS"
+                        WITHOUT
+                        WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, AND THE Promotion Parties DISCLAIM ALL SUCH
+                        WARRANTIES,
+                        INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND OR FITNESS FOR A
+                        PARTICULAR
+                        PURPOSE.
+                    </span>
+                </div>
+            </div>
+            <div class="10sp0" style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Taxes
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    I understand that
+                    all
+                    taxes (including, without limitation, federal, state, and local taxes) on or connected with any
+                    prize
+                    that
+                    is awarded to me, and the reporting consequences thereof, are my responsibility.&#xa0; If required
+                    by
+                    law,
+                    Sponsor shall be entitled to withhold and remit to the appropriate taxing authorities the amount of
+                    any
+                    tax
+                    or taxes due.&#xa0; I certify that I have provided Sponsor with my correct Social Security number,
+                    if
+                    requested by Sponsor, and I am not subject to backup withholding.
+                </div>
+            </div>
+            <div class="10sp0" style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Publicity Release
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    I agree
+                    that
+                    if I should become a verified winner, then (where legal) the Promotion Parties shall have the right,
+                    but
+                    not
+                    the obligation, to use my name, voice, and likeness, along with my address (city and state) and any
+                    statements made by or attributed to me relating to the Promotion Parties and/or the Promotion in any
+                    and
+                    all
+                    media, now known or hereafter devised, in perpetuity, and throughout the universe for advertising,
+                    marketing, publicity, and promotional purposes in connection with the Promotion and other promotions
+                    without
+                    further compensation, and I hereby release the Promotion Parties from any liability arising from
+                    such
+                    use,
+                    including, without limitation, claims for invasion of privacy, infringement of my right of
+                    publicity,
+                    and
+                    defamation (including libel and slander).
+                </div>
+            </div>
+            <div class="10sp0" style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Liability Release
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    On
+                    behalf of
+                    myself, my heirs, executors, and administrators, and in exchange for receipt of the Prize, I hereby
+                    release
+                    and agree to hold the Promotion Parties harmless from and against any and all costs, injuries,
+                    losses,
+                    or
+                    damages of any kind, including, without limitation, death and bodily injury, due in whole or in
+                    part,
+                    directly or indirectly, to my participation in the Promotion, or arising out of my participation in
+                    any
+                    Promotion related activity, or my receipt, use, or misuse of the Prize or any component or
+                    experience
+                    included with the Prize.&#xa0; I understand and acknowledge that the Promotion Parties have not
+                    arranged
+                    for
+                    nor carry any insurance of any kind for my benefit or for the benefit of my heirs, executors, or
+                    administrators, and that I am solely responsible for obtaining and paying any life, health, travel,
+                    accident, or other insurance relative to the use of the Prize.&#xa0; I agree that the above release
+                    shall be
+                    effective as a full and final general release of all legal claims described in the release, whether
+                    I
+                    actually know about such claims or not, despite the fact that the California Civil Code Section 1542
+                    or
+                    a
+                    similar law in another state may provide otherwise.&#xa0; I am aware that Section 1542 provides as
+                    follows:&#xa0; <span style="text-transform:uppercase">
+                        A general release does not extend to claims
+                        that
+                        the
+                        creditor or releasing party does not know or suspect to exist in his or her favor at the time of
+                        executing the release and that, if known by him or her, would have materially affected his or
+                        her
+                        settlement with the debtor or released party.
+                    </span>
+                </div>
+            </div>
+            <p class="HdgCenterBold-Italic" style="font-size:12pt">
+                [Intentionally Left Blank – Signature Page Follows]
+            </p>
+            <div style="border: 1px solid #b1b1b1; margin: 20px 0px;">
+                <div style=" padding: 8px 15px; border-bottom: 1px solid #b1b1b1;">
+                    <p class="10sp0" style="margin-bottom:0pt; font-size:13pt;">
+                        <strong>Winner</strong>
+                    </p>
+                </div>
+                <div style="padding:12px 15px 15px 15px;">
+                    <p style="margin-bottom: 10px; color: #333; margin-bottom: 15px;">
+                        <strong>
+                            <i>
+                                signature below
+                                represents that I have read, understand, and am in agreement with all of the
+                                terms of this Affidavit and Release and the Official Rules.
+                            </i><strong>
+                    </p>
+                    <p class="10sp0" style="margin-bottom:0pt; padding-right:4pt; padding-bottom:12pt; font-size:12pt">
+                        Winner Signature
+                        <div id="drpSign" style="width: 60%;border: 0pc;background: transparent;border-bottom: 1px solid #c2c2c2;;">
+                        </div>
+                        @* <div id="droppableSignature" style="width: 60%;border: 0pc;background: transparent;border-bottom: 1px solid #c2c2c2;;"></div> *@
+                        @* <input type="text" disabled / style="    width: 60%;
+                        border: 0pc;
+                        background: transparent;
+                        border-bottom: 1px solid #c2c2c2;"> *@
+                    </p>
+                    <p class="10sp0" style="margin-bottom:0pt; padding-right:4pt; font-size:12pt">
+                        Date:
+
+                        <div id="drpDate" style="width: 60%;border: 0pc;background: transparent;border-bottom: 1px solid #c2c2c2;;">
+                        </div>
+
+
+                        @* <input type="text" disabled / style="    width: 80%;
+                        border: 0pc;
+                        background: transparent;
+                        border-bottom: 1px solid #c2c2c2;" /> *@
+
+                    </p>
+                </div>
+            </div>
+
+            <p class="NotaryHeading" style="font-size:10pt">
+                STATE OF _______________<span style="width:47.11pt; display:inline-block">&#xa0;</span>
+            </p>
+            <p class="NotaryHeading" style="font-size:10pt">
+                <span style="width:171pt; display:inline-block">&#xa0;</span>
+            </p>
+            <p class="NotaryHeading" style="font-size:10pt">
+                COUNTY OF _____________<span style="width:46.55pt; display:inline-block">&#xa0;</span>
+            </p>
+            <p class="Normal0" style="font-size:10pt">
+                &#xa0;
+            </p>
+            <p class="10sp0" style="font-size:12pt; line-height: 22px;">
+                On  <input type="text" disabled / style="width: 20%;
+        border: 0pc;
+        background: transparent;
+        border-bottom: 1px solid #c2c2c2;" /> before me, <input type="text" disabled / style="width: 20%;
+        border: 0pc;
+        background: transparent;
+        border-bottom: 1px solid #c2c2c2;" /> , a Notary Public, personally appeared
+                <input type="text" disabled / style="width: 20%;
+        border: 0pc;
+        background: transparent;
+        border-bottom: 1px solid #c2c2c2;" />  who proved to me on the basis of satisfactory evidence to be the person(s) whose
+                name(s) is/are subscribed to the within instrument and acknowledged to me that he/she/they executed the
+                same
+                in his/her/their authorized capacity(ies), and that by his/her/their signature(s) on the instrument the
+                person(s), or the entity upon behalf of which the person(s) acted, executed the instrument.
+            </p>
+            <p class="10sp0" style="font-size:12pt; line-height: 22px;">
+                I certify under PENALTY OF PERJURY under the laws of the State of <input type="text" disabled / style="width: 10%;
+        border: 0pc;
+        background: transparent;
+        border-bottom: 1px solid #c2c2c2;" />  that the foregoing
+                paragraph is
+                true and correct.
+            </p>
+            <p class="10sp0" style="font-size:12pt; line-height: 22px;">
+                WITNESS my hand and official seal.
+            </p>
+            <p class="NotarySignature" style="font-size:12pt; line-height: 22px;">
+                Signature <input type="text" disabled / style="width: 30%;
+        border: 0pc;
+        background: transparent;
+        border-bottom: 1px solid #c2c2c2;" />
+            </p>
+            <p style="text-align:center; font-size:10pt">
+                <br style="page-break-before:always; clear:both" />
+            </p>
+            <p style="text-align:center; font-size:10pt">
+                <strong>&#xa0;</strong>
+            </p>
+            <p class="10sp0" style="margin-bottom:0pt; text-align:center; font-size:11pt">
+                <strong><span style=" ">EXHIBIT A</span></strong>
+            </p>
+            <p class="10sp0" style="margin-bottom:0pt; text-align:center; font-size:11pt">
+                <strong><span style=" ">&#xa0;</span></strong>
+            </p>
+            <p class="10sp0" style="margin-bottom:0pt; text-align:center; font-size:11pt">
+                <strong>
+                    <span style="text-transform:uppercase">
+                        APPROVED REPAIR 2024 swipe
+                        &amp;
+                        win promotion
+                    </span>
+                </strong>
+            </p>
+            <p class="10sp0" style="margin-bottom:0pt; text-align:center; font-size:11pt">
+                <strong><span style="text-transform:uppercase">Official Rules</span></strong>
+            </p>
+            <p class="10sp0" style="margin-bottom:0pt; text-align:center; font-size:11pt">
+                <strong><span style=" ">&#xa0;</span></strong>
+            </p>
+            <p class="10sp0" style="margin-bottom:0pt; text-align:center; font-size:11pt">
+                <strong><span style=" ">NO PURCHASE NECESSARY.</span></strong><strong>
+                    <span style=" ">&#xa0; </span>
+                </strong><strong>
+                    <span style=" ">
+                        A
+                        PURCHASE WILL NOT IMPROVE YOUR CHANCE OF WINNING.
+                    </span>
+                </strong>
+            </p>
+            <p class="10sp0" style="margin-bottom:0pt; text-align:justify; font-size:10pt">
+                <strong><span style=" text-transform:uppercase">&#xa0;</span></strong>
+            </p>
+            <div class="10sp0" style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Promotion Description
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                    font-weight: normal;
+                ">
+                    <span style=>
+                        The Approved Repair 2024 Swipe &amp; Win Promotion (the
+                        “
+                    </span><span style=>Promotion</span><span style=>
+                        ”) begins on
+                        June 3, 2024 at 12:00:00 a.m. Pacific Standard Time (“
+                    </span><span style=>PT</span><span style=>
+                        ”) and ends on
+                        August
+                        31, 2024 at 11:59:59 p.m. PT (the “
+                    </span><span style=>
+                        Promotion
+                        Period
+                    </span><span style=>
+                        ”). During the Promotion Period, a
+                        random
+                        drawing will be conducted by the Prize Administrator among all eligible entries received during
+                        such
+                        month to select nine hundred (900) $100 instant prize voucher (“
+                    </span><span style=>Prize Voucher</span><span style=>
+                        ”)
+                        winners
+                        and ten (10) $500 Visa gift card (“$
+                    </span><span style=>
+                        500 Gift
+                        Card
+                    </span><span style=>
+                        ”) winners, as more fully set forth
+                        below.
+                        Entry
+                        in the Promotion does not constitute entry into any other promotion, contest or sweepstakes. By
+                        participating in the Promotion, each entrant unconditionally accepts and agrees to comply with
+                        and
+                        abide
+                        by these Official Rules and the decisions of Auto Club Services, LLC, with a principal place of
+                        business
+                        at 3333 Fairview Road, Costa Mesa, CA 92626 (“
+                    </span><span style=>Sponsor</span><span style=>
+                        ” or
+                    </span><span style=>Club</span><span style=>
+                        ”),
+                        which shall be final and binding in all respects. The prize administrator is Pacific Research
+                        Group
+                        (“
+                    </span><span style=>Prize Administrator</span><span style=>
+                        ”). Prize Administrator will enable the QR code entry functionality,
+                        will
+                        communicate with winners about the Prize Claim documents and prize, and send the affidavit and
+                        Prize
+                        Voucher.
+                    </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Eligibility
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                    font-weight: normal;
+                ">
+                    <span style=>
+                        Open
+                        to legal residents of
+                    </span><span style=>&#xa0; </span><span style=>one of</span><span style=>&#xa0; </span><span style=>the following territories (the “</span><strong>
+                        <span style=>Promotion Territory</span>
+                    </strong><span style=>
+                        ”),
+                        described in
+                    </span><strong>
+                        <u>
+                            <span style=>
+                                Exhibit
+                                A
+                            </span>
+                        </u>
+                    </strong><span style=>
+                        attached hereto and made a part
+                        hereof, who are at least 18 years of age
+                        or
+                        older at the time of entry and who is a member in good standing of an affiliated AAA club in the
+                        Promotion Territory at the time of entry and at redemption of the prize (“
+                    </span><strong>
+                        <span style=>ACE AAA Club”).</span>
+                    </strong><span style=>
+                        &#xa0;
+                    </span><span style=>
+                        Officers, directors, and employees of Sponsor, an ACE AAA
+                        Club,
+                        Prize
+                        Administrator and their parent, subsidiaries, and affiliates, the American Automobile
+                        Association,
+                        any
+                        advertising and promotion agencies, and any AAR Facility or ADR Facility (as defined below) (all
+                        such
+                        individuals and entities referred to collectively, the “
+                    </span><strong>
+                        <span style=>Promotion Entities</span>
+                    </strong><span style=>
+                        ”),
+                        and each of their immediate family members and/or people living in the same household are NOT
+                        eligible
+                        to enter the Promotion or win a prize. Entrants must have a valid mobile phone number or email
+                        address
+                        on file with Sponsor at the time of entry. This Promotion is void where prohibited.
+                    </span><span style=>&#xa0; </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    How To Enter
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                    font-weight: normal;
+                ">
+                    <span style=>&#xa0; </span></strong><span style=>&#xa0;</span><span style=>
+                        To enter, visit a
+                        participating
+                        AAA Approved Auto Repair facility (“
+                    </span><strong>
+                        <span style=>
+                            AAR
+                            Facility
+                        </span>
+                    </strong><span style=>
+                        ”) or Approved Dealer Repair
+                        facility
+                        (
+                    </span><a id="_Hlk158422903">
+                        <span style=>“</span><strong>
+                            <span style=>ADR Facility</span>
+                        </strong>
+                    </a><strong>
+                        <span style=>,</span>
+                    </strong><span style=>
+                        ”) located in
+                        the
+                        Promotion Territory and have your AAA membership card swiped from 6/3/24 through 8/31/24 for a
+                        chance to
+                        win a prize.
+                    </span><strong><span style=>Limit</span></strong><strong>
+                        <span style=>&#xa0; </span>
+                    </strong><strong>
+                        <span style=>
+                            of
+                            one
+                            (1) entry per day of the Promotion Period is permitted. Limit of one (1) Prize Voucher and
+                            one
+                            (1)
+                            $500 gift card prize per entrant during the Promotion Period.
+                        </span>
+                    </strong><strong>
+                        <span style=>&#xa0;</span>
+                    </strong><span style=>
+                        See
+                        AAA.com/instantwin for a list of participating AAR and ADR facilities.
+                    </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    General Conditions Of Entry
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                    font-weight: normal;
+                ">
+                    <span style=>
+                        Sponsor is the official timekeeper for the Promotion. Tampering with
+                        the
+                        entry
+                        process or the operation of the Promotion is prohibited and any tampered with entries will be
+                        void.
+                        In
+                        the event a dispute regarding an entry cannot be resolved to Sponsor’s satisfaction, the
+                        affected
+                        entry
+                        will be deemed ineligible. Sponsor shall not be responsible for incorrect or inaccurate entry
+                        information or by any technical or human error which may occur in the processing of the entries
+                        in
+                        the
+                        Promotion. Sponsor assumes no responsibility or liability for any error, omission, interruption,
+                        deletion, theft or destruction, or unauthorized access to, or alteration of entries.
+                    </span>
+
+                    <strong>
+                        <span style=>
+                            WINNER SELECTION AND NOTIFICATION; PRIZES; ODDS:
+                        </span>
+                    </strong><span style=>
+                        For the Prize Vouchers, nine hundred (900)
+                        winners
+                        will
+                        be randomly chosen during the Promotion Period at the point of swiping of a AAA Membership Card,
+                        keying
+                        in a AAA membership number, or scanning a QR Code to enter a membership number at an AAR or ADR
+                        Facility
+                        within the Promotion Territory. Member must be present at the AAR or ADR Facility at the time of
+                        entry
+                        for the Prize Voucher. Sponsor will verify winner eligibility within 15 business day(s) of being
+                        selected for the Prize Voucher. Winner must redeem the Prize Voucher by August 31, 2025 at a
+                        single
+                        visit for a purchase of up to $100 in auto repairs, products, and services at the AAR or ADR
+                        Facility
+                        that issued the Prize Voucher.
+                    </span><span style=>&#xa0; </span><span style=>
+                        A Prize Voucher has no residual value and no credit will be issued if
+                        the
+                        purchase amount is less than the Prize Voucher amount. Winner is responsible for the cost of
+                        services
+                        above the value of the redeemed Prize Voucher.
+                    </span><span style=>
+                        &#xa0;
+                    </span>
+
+                    <div style="margin-bottom: 15px">
+                        For the $500 Gift Cards, on or about September
+                        16, 2024, Sponsor (or its
+                        designees) will conduct a random drawing to select ten (10) winners from all eligible entries
+                        received
+                        within the Promotion Territory during the Promotion Period.</span><span style=>&#xa0;
+                    </div>
+
+                    <span style=>
+                        Attempts to notify potential winners will be made via phone, text or
+                        email.
+                    </span><span style=>&#xa0; </span><span style=>
+                        Odds
+                        of
+                        winning depend on number of entries. Sponsor shall have no liability for any winner notification
+                        that is
+                        lost, intercepted or not received by a potential winner for any reason. If, despite reasonable
+                        efforts,
+                        a potential winner does not respond within seven (7) days of the first notification attempt (or
+                        such
+                        shorter time as exigencies may require), or if the prize or prize notification is returned as
+                        unclaimed
+                        or undeliverable to such potential winner, such potential winner will forfeit any prize and an
+                        alternate
+                        winner may be selected. If any potential prize winner is found to be ineligible, or it has not
+                        complied
+                        with these Official Rules or declines the applicable prize for any reason prior to award, such
+                        potential
+                        prize winner will be disqualified and an alternate winner may be selected. Sponsor may
+                        successively
+                        attempt to contact up to two (2) potential prize winners in accordance with such procedure, and
+                        if
+                        there
+                        is still no confirmed prize winner after such attempts have been made, if any, the applicable
+                        prize
+                        may
+                        go unawarded.
+                    </span><span style=>&#xa0; </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    General Prize Conditions
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                    font-weight: normal;
+                ">
+                    <span style=>
+                        No substitution of prize(s) will be allowed, except Sponsor
+                        reserves the
+                        right in its sole discretion to substitute prize(s) of comparable value if any prize listed is
+                        unavailable, in whole or in part, for any reason. The prize will be awarded only if the
+                        potential
+                        prize
+                        winner fully complies with these Official Rules.
+                    </span><span style=>
+                        &#xa0;
+                    </span><span style=>
+                        All portions of the prize is non-assignable and
+                        non-transferable.
+                        Any
+                        prizes pictured in advertising, and other Promotion materials are for illustrative purposes
+                        only.
+                        All
+                        details and other restrictions of the prize not specified in these Official Rules will be
+                        determined
+                        by
+                        Sponsor in its sole discretion.
+                    </span><span style=>
+                        &#xa0;
+                    </span><strong>
+                        <span style="text-transform:uppercase">
+                            Each prize winner shall be
+                            solely
+                            responsible
+                            for all federal, state and/or local taxes, and the reporting consequences thereof, and for
+                            any
+                            other
+                            fees or costs associated with the applicable prize.
+                        </span>
+                    </strong><strong>
+                        <span style="text-transform:uppercase">&#xa0; </span>
+                    </strong><strong>
+                        <span style="color:#010202">
+                            ALL PRIZES ARE PROVIDED “AS IS” WITHOUT WARRANTY OF
+                            ANY
+                            KIND, EITHER EXPRESS OR IMPLIED, AND SPONSOR HEREBY DISCLAIMS ALL SUCH WARRANTIES, INCLUDING
+                            BUT
+                            NOT
+                            LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
+                            AND/OR
+                            NON-INFRINGEMENT.
+                        </span>
+                    </strong><span style=>&#xa0; </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Further Documentation And Publicity
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                    font-weight: normal;
+                ">
+                    <span style=>
+                        : Potential winners may be required to execute an Affidavit of
+                        Eligibility, a
+                        Liability Release and (where imposing such condition is legal) a Publicity Release
+                        (collectively,
+                        "
+                    </span><strong><span style=" ">Prize Claim Documents</span></strong><span style=>
+                        "). If any potential winner fails or refuses to sign and return all
+                        Prize
+                        Claim Documents within seven (7) days of prize notification (or such shorter time as exigencies
+                        may
+                        require), the winner may be disqualified and an alternate winner may be selected. As part of the
+                        Prize
+                        Claim Documents, a potential winner may also be required to execute a further right of publicity
+                        release
+                        to use the winner’s name and/or image, including, but not limited to, for advertising and
+                        promotional
+                        purposes, without further compensation.
+                    </span>
+
+                </div>
+            </div>
+
+            <div style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    General Liability Release/force Majeure
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    <span style=>
+                        Entry in the Promotion constitutes entrant’s permission for Sponsor
+                        to
+                        use
+                        entrant’s name, photographs, likeness, voices, biographical information, statements,
+                        and
+                    </span><span style=>&#xa0; </span><span style=>
+                        address
+                        (city and state) for
+                        advertising and/or publicity purposes worldwide and in all forms of media now known or hereafter
+                        developed, in perpetuity, without further compensation.
+                    </span><span style=>
+                        &#xa0;
+                    </span><span style=>
+                        Entrants agree that Sponsor (a) shall not be responsible or
+                        liable
+                        for, and are hereby released from, any and all costs, injuries, losses or damages of any kind,
+                        including, without limitation, death and bodily injury, due in whole or in part, directly or
+                        indirectly,
+                        to participation in the Promotion or any Promotion-related activity, or from entrants’
+                        acceptance,
+                        receipt, possession and/or use or misuse of any prize, and (b) have not made any warranty,
+                        representation or guarantee express or implied, in fact or in law, with respect to any prize,
+                        including,
+                        without limitation, to such prize’s quality or fitness for a particular purpose. Sponsor
+                        reserves
+                        the
+                        right in its sole discretion to disqualify any individual who is found to be tampering with the
+                        entry
+                        process or the operation of the Promotion, to be acting in violation of these Official Rules, or
+                        to
+                        be
+                        acting in an unsportsmanlike or disruptive manner, or with the intent to disrupt or undermine
+                        the
+                        legitimate operation of the Promotion, or to annoy, abuse, threaten or harass any other person,
+                        and
+                        Sponsor reserves the right to seek damages and other remedies from any such person to the
+                        fullest
+                        extent
+                        permitted by law. Sponsor reserves the right to modify, extend, suspend, or terminate the
+                        Promotion
+                        if
+                        it determines, in its sole discretion, that the Promotion is technically impaired or corrupted
+                        or
+                        that
+                        fraud or technical problems, failures, or malfunctions or other causes beyond Sponsor’s control
+                        have
+                        destroyed or severely undermined or to any degree impaired the integrity, administration,
+                        security,
+                        proper play and/or feasibility of the Promotion as contemplated herein. In the event an
+                        insufficient
+                        number of eligible entries are received and/or Sponsor is prevented from awarding prizes or
+                        continuing
+                        with the Promotion as contemplated herein by any event beyond its control, including but not
+                        limited
+                        to
+                        fire, flood, natural or man-made epidemic of health of other means, earthquake, explosion, labor
+                        dispute
+                        or strike, act of God or public enemy, satellite or equipment failure, riot or civil
+                        disturbance,
+                        terrorist threat or activity, war (declared or undeclared) or any federal state or local
+                        government
+                        law,
+                        order, or regulation, public health crisis, order of any court or jurisdiction, or other cause
+                        not
+                        reasonably within Sponsor’s control (each a “
+                    </span><strong>
+                        <span style=>
+                            Force
+                            Majeure
+                        </span>
+                    </strong><span style=>
+                        ” event or occurrence), then subject
+                        to
+                        any
+                        governmental approval which may be required, Sponsor shall have the right to modify, suspend,
+                        extend, or
+                        terminate the Promotion.
+                    </span><span style=>&#xa0; </span><span style=>
+                        If the Promotion is terminated before the designated end date, Sponsor
+                        will
+                        (if possible) select the winner(s) in a from all eligible, non-suspect entries received as of
+                        the
+                        date
+                        of the event giving rise to the termination. Inclusion in such Promotion shall be each entrant’s
+                        sole
+                        and exclusive remedy under such circumstances. Only the type and quantity of prizes described in
+                        these
+                        Official Rules will be awarded. These Official Rules cannot be modified or amended in any way
+                        except
+                        in
+                        a written document issued in accordance with law by a duly authorized representatives of
+                        Sponsor.
+                        Unless
+                        otherwise stated in these Official Rules, the invalidity or unenforceability of any provision of
+                        these
+                        Official Rules shall not affect the validity or enforceability of any other provision. Unless
+                        otherwise
+                        stated in these Official Rules, in the event that any provision is determined to be invalid or
+                        otherwise
+                        unenforceable or illegal, these Official Rules shall otherwise remain in effect and shall be
+                        construed
+                        in accordance with their terms as if the invalid or illegal provision were not contained
+                        herein.
+                    </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Governing Law/jurisdiction
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    <span style=>
+                        ALL ISSUES AND QUESTIONS CONCERNING THE CONSTRUCTION, VALIDITY,
+                        INTERPRETATION AND ENFORCEABILITY OF THESE OFFICIAL RULES OR THE RIGHTS AND OBLIGATIONS OF
+                        ENTRANTS
+                        OR
+                        SPONSOR IN CONNECTION WITH THE PROMOTION SHALL BE GOVERNED BY AND CONSTRUED IN ACCORDANCE WITH
+                        THE
+                        INTERNAL LAWS OF THE STATE OF CALIFORNIA WITHOUT GIVING EFFECT TO ANY CHOICE OF LAW OR
+                    </span><span style="text-transform:uppercase">
+                        CONFLICT OF LAW RULES OR PROVISIONS
+                        THAT WOULD
+                        CAUSE
+                        THE APPLICATION OF ANY OTHER STATE’S LAWS.
+                    </span><span style="text-transform:uppercase">&#xa0; </span><span style="text-transform:uppercase">
+                        For the purposes of any disputes hereunder,
+                        by
+                        entering this Promotion, each entrant agrees that any and all disputes, claims, and causes of
+                        action
+                        arising out of or in any way related to this Promotion shall be resolved individually, without
+                        resort to
+                        any form of class action and consents to the exclusive jurisdiction and venue of the appropriate
+                        state
+                        or federal court situated in ORANGE COUNTy, CALIFORNIA.
+                    </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Arbitration
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    <div style=" margin-bottom: 15px;">
+                        :
+                        By
+                        participating in this Promotion, entrant agrees that any and all controversies, claims,
+                        counterclaims or
+                        other disputes entrant may have with, or claims entrant may have against Sponsor relating to,
+                        arising
+                        out of or connected in any way with (a) the Promotion, (b) the awarding or redemption of any
+                        prize,
+                        and/or (c) the determination of the scope or applicability of this agreement to arbitrate (a
+                        “</span><strong><span style=>Claim</span></strong><span style=>
+                            ”), will be resolved exclusively by final and binding arbitration
+                            in
+                            accordance with the Rules of the American Arbitration Association (“
+                        </span><strong>
+                            <span style=>AAA Rules</span>
+                        </strong><span style=>”).</span><span style=>&#xa0;</span><span style=>
+                            The arbitration will be heard
+                            and determined by a single arbitrator.
+                        </span><span style=>&#xa0;</span><span style=>
+                            The arbitrator's
+                            decision in any such arbitration will be final and
+                            binding
+                            upon the parties and may be enforced in any court of competent jurisdiction.
+                        </span><span style=>&#xa0;</span><span style=>
+                            The parties agree
+                            that the
+                            arbitration proceedings will be kept confidential and that the existence of the proceeding
+                            and any
+                            element of it will not be disclosed beyond the arbitration proceedings, except as may
+                            lawfully be
+                            required in judicial proceedings relating to the arbitration, by applicable disclosure rules
+                            and
+                            regulations of securities regulatory authorities or other governmental agencies, or as
+                            specifically
+                            permitted by state law. The Federal Arbitration Act and federal arbitration law apply to
+                            this
+                            agreement.
+                        </span><span style=>&#xa0;</span><span style=>
+                            However,
+                            the Arbitrator, and not any federal, state, or local court or agency, shall have the
+                            exclusive
+                            authority
+                            to resolve any dispute relating to the interpretation, applicability, enforceability, or
+                            formation
+                            of
+                            these Official Rules including, but not limited to, a claim that all or any part of these
+                            Official
+                            Rules
+                            is void or voidable.
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        If entrant demonstrates that the costs of
+                        arbitration will be
+                        prohibitive as
+                        compared to the costs of litigation, Sponsor will pay as much of the administrative costs and
+                        arbitrator’s fees required for the arbitration as the arbitrator deems necessary to prevent the
+                        cost
+                        of
+                        the arbitration from being prohibitive.</span><span style=>&#xa0;</span><span style=>
+                            In the final award, the arbitrator may apportion the costs of
+                            arbitration
+                            and
+                            the compensation of the arbitrator among the parties in such amounts as the arbitrator deems
+                            appropriate.
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        This arbitration agreement does not preclude
+                        entrant from seeking action
+                        by
+                        federal, state, or local government agencies.</span><span style=>&#xa0;</span><span style=>
+                            Entrant and Sponsor
+                            also have
+                            the right to bring qualifying claims in small
+                            claims court.
+                        </span><span style=>&#xa0;</span><span style=>
+                            In
+                            addition, entrant and Sponsor retain the right to apply to any court of competent
+                            jurisdiction for
+                            provisional relief, including pre-arbitral attachments or preliminary injunctions, and any
+                            such
+                            request
+                            shall not be deemed incompatible with these Official Rules, nor a waiver of the right to
+                            have
+                            disputes
+                            submitted to arbitration as provided in these Official Rules.
+                        </span><span style=>&#xa0;</span><span style=>
+                    </div>
+
+                    <div style=" margin-bottom: 15px;">
+                        Neither entrant nor Sponsor may act as a class
+                        representative, nor
+                        participate as a member of a class of claimants, with respect to any Claim.</span><span style=>&#xa0;</span><span style=>
+                            Claims may not be
+                            arbitrated
+                            on a
+                            class or representative basis.
+                        </span><span style=>&#xa0;</span><span style=>
+                            The arbitrator can decide only entrant and/or Sponsor’s individual
+                            Claims.
+                        </span><span style=>&#xa0;</span><span style=>
+                            The
+                            arbitrator may not consolidate or join the claims of other persons or parties who may be
+                            similarly
+                            situated.
+                        </span><span style=>&#xa0;</span><span style=>
+                            If for
+                            any
+                            reason a claim proceeds in court rather than in arbitration we each waive any right to a
+                            jury
+                            trial.
+                        </span><span style=>&#xa0;</span><span style=>
+                            Notwithstanding anything to the contrary herein, the arbitrator may award in the arbitration
+                            the
+                            same
+                            damages or other relief available under applicable law, including injunctive and declaratory
+                            relief
+                            (which may include public injunctive relief), as if the action were brought in court on an
+                            individual
+                            basis.
+                    </div>
+
+                    <span style=>
+                        THIS SECTION LIMITS CERTAIN RIGHTS, INCLUDING THE RIGHT TO MAINTAIN
+                        A
+                        COURT
+                        ACTION, THE RIGHT TO A JURY TRIAL, THE RIGHT TO PARTICIPATE IN ANY FORM OF CLASS OR
+                        REPRESENTATIVE
+                        CLAIM, THE RIGHT TO ENGAGE IN DISCOVERY EXCEPT AS PROVIDED IN AAA RULES, AND THE RIGHT TO
+                        CERTAIN
+                        REMEDIES AND FORMS OF RELIEF.
+                    </span><span style=>&#xa0;</span><span style=>
+                        OTHER RIGHTS THAT ENTRANT OR SPONSOR WOULD HAVE IN COURT ALSO MAY NOT
+                        BE
+                        AVAILABLE IN ARBITRATION.
+                    </span><span style=>&#xa0;</span><span style=>&#xa0;</span><span style=>
+                        If any provision of this
+                        Section
+                        is found to be invalid or unenforceable, then that specific provision shall be of no force and
+                        effect
+                        and shall be severed, but the remainder of this Section will continue in full force and
+                        effect.
+                    </span><span style=>&#xa0;</span><span style=>
+                        No
+                        waiver of
+                        any provision of this Section of these Official Rules will be effective or enforceable unless
+                        recorded
+                        in a writing signed by the party waiving such a right or requirement.
+                    </span><span style=>&#xa0;</span><span style=>
+                        Such a waiver shall not
+                        waive or
+                        affect any other portion of these Official Rules. This Section of these Official Rules will
+                        survive
+                        the
+                        termination of your relationship with Sponsor.
+                    </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:10pt; font-size:10pt; border: 1px solid #ddd;">
+
+                <div style="background: #1a253d;
+                    padding: 5px 10px;
+                    color: #fff;
+                    font-size: 16px;">
+                    Winner List/official Rules
+                </div>
+                <div style="
+                    font-size: 14px;
+                    padding: 6px 12px;
+                    line-height: 18px;
+                ">
+                    <span style=>&#xa0; </span><span style=>
+                        To obtain any
+                        legally-required
+                        winner list (after the conclusion of the Promotion) or a copy of these Official Rules, send a
+                        self-addressed envelope with the proper postage affixed to:
+                    </span><span style=>
+                        &#xa0;
+                    </span><span style=>
+                        Auto Club Services, LLC, 3333 Fairview Road, A383, Costa
+                        Mesa,
+                        CA.
+                        92626, Attention:
+                    </span><span style=>&#xa0; </span><span style=>Scott Severe.</span><span style=>
+                        &#xa0;
+                    </span><span style=>
+                        Please specify "winner list" or "Official Rules" and the name
+                        of the
+                        Promotion
+                        in your request.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <p class="10sp0" style="margin-bottom:5pt; margin-top: 20pt; text-align:center; font-size:11pt">
+                <strong><span style=>EXHIBIT 1</span></strong>
+            </p>
+            <p class="10sp0" style="margin-bottom:0pt; text-align:center; font-size:11pt;margin-bottom: 12px;">
+                <strong><span style=>PROMOTION TERRITORIES</span></strong>
+            </p>
+
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt;margin-bottom: 12px;">
+                <strong><u><span style=>Automobile Club of Southern California</span></u></strong>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <u><span style=>California Counties</span></strong></u><span style=>:</span><span style=>&#xa0; </span><span style=>
+                    Imperial, Inyo, Kern, Los Angeles, Mono, Orange, Riverside, San
+                    Bernardino,
+                    San Diego, Santa Barbara, San Luis Obispo, Tulare and Ventura.
+                </span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <strong><u><span style=>AAA Texas</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>State of Texas</span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <strong><u><span style=>AAA New Mexico</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>State of New Mexico</span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <strong><u><span style=>AAA Hawaii, LLC</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>State of Hawaii</span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <strong><u><span style=>Automobile Club of Missouri</span></u></strong>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <span style=>States of Arkansas, Louisiana, Mississippi and Missouri</span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <strong><u><span style=>Illinois Counties</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>
+                    Alexander, Bond, Calhoun, Clinton, Edwards, Franklin, Gallatin, Greene,
+                    Hamilton, Hardin, Jackson, Jefferson, Jersey, Johnson, Madison, Marion, Massac, Monroe, Perry, Pope,
+                    Pulaski, Randolph, St. Clair, Saline, Union, Wabash, Washington, Wayne, White and Williamson.
+                </span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <strong><u><span style=>Indiana Counties</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>
+                    Crawford, Daviess, Dubois, Gibson, Knox, Martin, Perry, Pike, Posey,
+                    Spencer,
+                    Vanderburgh and Warrick.
+                </span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <strong><u><span style=>Kansas Counties</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>
+                    Atchison, Brown, Doniphan,
+                    Johnson and Wyandotte.
+                </span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <strong>
+                    <u>
+                        <span style=>
+                            Alabama Motorists Association,
+                            Inc
+                        </span>
+                    </u>
+                </strong><u><span style=>.</span></u><span style=>:</span><span style=>&#xa0; </span><span style=>State of Alabama</span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <strong><u><span style=>AAA Northern New England</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>States of Maine, State of New Hampshire and State of Vermont</span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px;">
+                <strong><u><span style=>AAA East Central </span></u></strong>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px; line-height: 20px;">
+                <strong><u><span style=>Kentucky Counties</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>
+                    Adair, Allen, Anderson, Ballard, Barren, Breckinridge, Bullitt, Butler,
+                    Caldwell, Calloway, Carlisle, Casey, Christian, Clinton, Crittenden, Cumberland, Daviess, Edmonson,
+                    Fulton, Graves, Grayson, Green, Hancock, Hardin, Hart, Henderson, Henry, Hickman, Hopkins,
+                    Jefferson,
+                    Larue, Livingston, Logan, Lyon, McCracken, McLean, Marion, Marshall, Meade, Metcalfe, Monroe,
+                    Muhlenberg, Nelson, Ohio, Oldham, Russell, Shelby, Simpson, Spencer, Taylor, Todd, Trigg, Trimble,
+                    Union, Warren, Washington, Wayne and Webster.
+                </span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px; line-height: 20px;">
+                <strong><u><span style=>Ohio Counties</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>
+                    Adams, Ashland, Ashtabula,
+                    Athens, Columbiana, Cuyahoga, Fayette, Gallia, Geauga, Highland, Hocking, Huron, Jackson, Jefferson,
+                    Lake, Lawrence, Lorain, Mahoning, Meigs, Noble, Pike, Portage, Ross, Scioto, Stark (the Cities of
+                    Alliance and Massillon; and includes the townships of Lawrence, Lexington, Tuscarawas &amp;
+                    Washington
+                    plus the eastern ½ of Marlboro Township, the eastern ½ of Nimishillen Township and the portions of
+                    Jackson &amp; Perry Townships west of Genoa Road or the extension thereof), Trumbull, Tuscarawas,
+                    Vinton
+                    and Washington
+                </span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px; line-height: 20px;">
+                <strong><u><span style=>Pennsylvania Counties</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>
+                    Allegheny, Armstrong, Beaver, Bucks (the townships of Bedminster, East
+                    Rockhill, Haycock [southern ½], Hilltown, Milford, Richland, Springfield [western ½] and West
+                    Rockhill;
+                    the boroughs of Dublin, Perkasie, Quakertown, Richlandtown, Sellersville, Silverdale, Telford and
+                    Trumbauersville), Butler, Blair, Cambria (townships of Dean, Reade and White), Carbon (the townships
+                    of
+                    East Penn, Franklin, Lower Towamensing, Mahoning, Mauch Chunk and Towamensing; the boroughs of
+                    Bowmanstown, Jim Thorpe, Lehighton, Palmerton and Parryville; and Nesquehoning [U]), Cameron,
+                    Chester
+                    (the townships of East Coventry, East Vincent [northern ½], North Coventry, South Coventry [northern
+                    2/3] and Warwick [northern 2/3] and the borough of Spring City), Clarion, Crawford, Elk, Erie,
+                    Fayette,
+                    Forest, Greene, Indiana, Jefferson, Lawrence, Lehigh, Mercer, McKean, Montgomery (the townships of
+                    Douglass, Franconia, Hatfield, Lower &amp; Upper Frederick, Lower &amp; Upper Gwynedd, Lower
+                    Limerick,
+                    Lower &amp; Upper Pottsgrove, Lower &amp; Upper Providence, Lower &amp; Upper Salford, Marlboro,
+                    Montgomery, New Hanover, Perkiomen, Salford, Skippack, Towamencin, Upper Hanover, West Pottsgrove,
+                    Whitpain and Worcester; the boroughs of Collegeville, East Greenville, Green Lane, Hatfield,
+                    Lansdale,
+                    North Wales, Pennsburg, Pottstown, Red Hill, Royersford, Schwenksville, Souderton, Telford and
+                    Trappe;
+                    and Mont Clare [U] and Stowe [U]), Northampton (the townships of Allen, East Allen, Hanover, Leigh
+                    and
+                    Lower Saucon [west of Route 412]; the boroughs of Bath, Freemansburg, Hellertown, Northampton and
+                    Walnutport; and the city of Bethlehem),
+                </span><span style=>&#xa0; </span><span style=>
+                    Somerset (the townships of Addison, Allegheny, Black, Brothersvalley, Elk
+                    Lick, Fairhope, Greenville, Jefferson, Larimer, Lincoln, Lower Turkeyfoot, Middlecreek, Milford,
+                    Northampton, Somerset, Southampton, Stonycreek, Summit and Upper Turkeyfoot; the boroughs of
+                    Addison,
+                    Berlin, Casselman, Confluence, Garrett, Meyersdale, New Baltimore, New Centerville, Rockwood,
+                    Salisbury,
+                    Shanksville, Somerset, Stoystown, Ursina and Wellersburg), Venango, Washington, Westmoreland and
+                    Warren
+                </span>
+            </p>
+            <p style="margin-bottom:6pt; text-align:justify; font-size:11pt; margin-bottom: 12px; line-height: 20px;">
+                <strong><u><span style=>West Virginia Counties</span></u></strong><span style=>:</span><span style=>&#xa0; </span><span style=>
+                    Barbour, Berkeley, Braxton, Brooke, Cabell, Calhoun, Doddridge, Gilmer,
+                    Grant,
+                    Hampshire, Hancock, Hardy, Harrison, Jackson, Jefferson, Lincoln, Lewis, Logan, Marion, Marshall,
+                    Mason,
+                    Mineral, Mingo, Monongalia, Morgan, Ohio, Pendleton, Pleasants, Pocahontas, Preston, Putnam,
+                    Randolph,
+                    Ritchie, Roane, Taylor, Tucker, Tyler, Upshur, Wayne, Webster, Wetzel, Wirt and Wood.
+                </span>
+            </p>
+            <p class="Normal0" style="font-size:11pt; margin-bottom: 12px;">
+                <span style=>&#xa0;</span>
+            </p>
+
+            <div style="clear:both">
+                <table style="width:100%; border-collapse:collapse">
+                    <tr>
+                        <td style="width:161.75pt; padding-right:5.75pt; padding-left:5.75pt; vertical-align:bottom">
+                            <p class="Normal0" style="font-size:10pt">
+                                <span style="letter-spacing:-0.1pt">SMRH:4871-8430-4554.1</span>
+                            </p>
+                        </td>
+                        <td style="width:121.1pt; padding-right:5.75pt; padding-left:5.75pt; vertical-align:top">
+                            <p class="10spCenterednospaceafter">
+                                -1-
+                            </p>
+                        </td>
+                        <td style="width:161.3pt; padding-right:5.75pt; padding-left:5.75pt; vertical-align:bottom">
+                            <p class="FooterRightAligned" style="font-size: 10pt;">
+                                05KV-357099
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+                <p class="FooterFiller">
+                    &#xa0;
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+
+        function showSignature(element) {
+            if ($('#drgSign').length == 0) {
+                $(element).after(`<img class="m-2 draggable-img" src="/signatures/signature.png" id="drgSign"/>`)
+                $("#drgSign").draggable({
+                    accept: "#drpSign",
+                });
+                $("#drpSign").droppable({
+                    accept: "#drgSign",
+                    drop: function (event, ui) {
+                        ui.draggable.removeAttr("id")
+                    }
+                });
+            }
+        }
+
+        function showDateDiv(element) {
+            if ($('#drgDate').length == 0) {
+                $(element).after(`<span class="m-2" id="drgDate">@(DateTime.Now.Date.ToString("MM/dd/yyyy"))</span>`);
+                $("#drgDate").draggable({
+                    accept: "#drpDate",
+                });
+                $("#drpDate").droppable({
+                    accept: "#drgDate",
+                    drop: function (event, ui) {
+                        ui.draggable.removeAttr("id")
+                    }
+                });
+            }
+        }
+    </script>
+}
