@@ -28,16 +28,6 @@
     #signatureDrpImg {
         display: none;
     }
-    /* #droppable {
-                                                                                        position: absolute;
-                                                                                        left: 250px;
-                                                                                        top: 0;
-                                                                                        width: 125px;
-                                                                                        height: 125px;
-                                                                                        background: #999;
-                                                                                        color: #fff;
-                                                                                        padding: 10px;
-                                                                                      } */
 
     body {
         font-family: Arial !important;
@@ -1451,58 +1441,7 @@
                 </div>
             </div>
 
-            <p class="NotaryHeading" style="font-size:10pt">
-                STATE OF _______________<span style="width:47.11pt; display:inline-block">&#xa0;</span>
-            </p>
-            <p class="NotaryHeading" style="font-size:10pt">
-                <span style="width:171pt; display:inline-block">&#xa0;</span>
-            </p>
-            <p class="NotaryHeading" style="font-size:10pt">
-                COUNTY OF _____________<span style="width:46.55pt; display:inline-block">&#xa0;</span>
-            </p>
-            <p class="Normal0" style="font-size:10pt">
-                &#xa0;
-            </p>
-            <p class="10sp0" style="font-size:12pt; line-height: 22px;">
-                On  <input type="text" disabled / style="width: 20%;
-        border: 0pc;
-        background: transparent;
-        border-bottom: 1px solid #c2c2c2;" /> before me, <input type="text" disabled / style="width: 20%;
-        border: 0pc;
-        background: transparent;
-        border-bottom: 1px solid #c2c2c2;" /> , a Notary Public, personally appeared
-                <input type="text" disabled / style="width: 20%;
-        border: 0pc;
-        background: transparent;
-        border-bottom: 1px solid #c2c2c2;" />  who proved to me on the basis of satisfactory evidence to be the person(s) whose
-                name(s) is/are subscribed to the within instrument and acknowledged to me that he/she/they executed the
-                same
-                in his/her/their authorized capacity(ies), and that by his/her/their signature(s) on the instrument the
-                person(s), or the entity upon behalf of which the person(s) acted, executed the instrument.
-            </p>
-            <p class="10sp0" style="font-size:12pt; line-height: 22px;">
-                I certify under PENALTY OF PERJURY under the laws of the State of <input type="text" disabled / style="width: 10%;
-        border: 0pc;
-        background: transparent;
-        border-bottom: 1px solid #c2c2c2;" />  that the foregoing
-                paragraph is
-                true and correct.
-            </p>
-            <p class="10sp0" style="font-size:12pt; line-height: 22px;">
-                WITNESS my hand and official seal.
-            </p>
-            <p class="NotarySignature" style="font-size:12pt; line-height: 22px;">
-                Signature <input type="text" disabled / style="width: 30%;
-        border: 0pc;
-        background: transparent;
-        border-bottom: 1px solid #c2c2c2;" />
-            </p>
-            <p style="text-align:center; font-size:10pt">
-                <br style="page-break-before:always; clear:both" />
-            </p>
-            <p style="text-align:center; font-size:10pt">
-                <strong>&#xa0;</strong>
-            </p>
+
             <p class="10sp0" style="margin-bottom:0pt; text-align:center; font-size:11pt">
                 <strong><span style=" ">EXHIBIT A</span></strong>
             </p>
@@ -2467,6 +2406,8 @@
     </div>
 </div>
 
+<button id="generatePdfButton">Generate PDF</button>
+
 @section Scripts {
     <script type="text/javascript">
 
@@ -2475,12 +2416,16 @@
             if ($('#drgSign').length == 0) {
                 $(element).after(`<img class="m-2 draggable-img" src="/signatures/signature.png" id="drgSign"/>`)
                 $("#drgSign").draggable({
-                    accept: "#drpSign",
+                    // accept: "#drpSign",
+                    revert: "invalid",
+                    helper: "clone"
                 });
                 $("#drpSign").droppable({
                     accept: "#drgSign",
                     drop: function (event, ui) {
                         ui.draggable.removeAttr("id")
+                        $(this).append($(ui.helper).clone());
+                        $(element).next('.ui-draggable-handle').remove();
                     }
                 });
             }
@@ -2490,15 +2435,37 @@
             if ($('#drgDate').length == 0) {
                 $(element).after(`<span class="m-2" id="drgDate">@(DateTime.Now.Date.ToString("MM/dd/yyyy"))</span>`);
                 $("#drgDate").draggable({
-                    accept: "#drpDate",
+                    // accept: "#drpDate",
+                    revert: "invalid",
+                    helper: "clone"
                 });
                 $("#drpDate").droppable({
                     accept: "#drgDate",
                     drop: function (event, ui) {
                         ui.draggable.removeAttr("id")
+                        $(this).append($(ui.helper).clone());
+                        $(element).next('.ui-draggable-handle').remove();
                     }
                 });
             }
         }
+
+        document.getElementById('generatePdfButton').addEventListener('click', function () {
+            var htmlContent = document.documentElement.innerHTML; // Capture entire HTML content
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Pdf/GeneratePdf', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // PDF generated successfully, handle the response if needed
+                    var blob = new Blob([xhr.response], { type: 'application/pdf' });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'output.pdf';
+                    link.click();
+                }
+            };
+            xhr.send(JSON.stringify({ htmlContent: htmlContent }));
+        });
     </script>
 }
